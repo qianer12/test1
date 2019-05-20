@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test1.dao.UserDao" >
+
+    <resultMap id="BaseResultMap" type="com.test1.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!--用户查询-->
+    <select id="selectUser" parameterType="com.test1.entity.User" resultMap="BaseResultMap">
+        SELECT id,username,password,age FROM user WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <!--新增用户 方式1-->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user (username,password,age)
+        values
+            (#{username},#{password},#{age})
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id" >
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--新增用户 方式2-->
+    <insert id="adduser1" parameterType="com.test1.entity.User">
+        INSERT INTO user (id,username,password,age) VALUES (UUID(),#{username},#{password},#{age})
+    </insert>
+
+</mapper>

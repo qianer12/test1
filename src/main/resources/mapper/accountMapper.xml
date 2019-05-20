@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test1.dao.AccountDao">
+
+    <select id="findById" parameterType="_int" resultType="Account">
+        SELECT * FROM account WHERE id=#{id}
+    </select>
+
+    <select id="findByName" parameterType="String" resultType="Account">
+        SELECT * FROM account WHERE username=#{username}
+    </select>
+
+    <update id="update" parameterType="Account">
+        UPDATE account SET balance=#{balance} WHERE id=#{id}
+    </update>
+
+</mapper>

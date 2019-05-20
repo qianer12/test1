@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>转账</title>
+    <script src="http://how2j.cn/study/vue.min.js"></script>
+    <script src="http://how2j.cn/study/jquery.min.js"></script>
+</head>
+<body>
+<form id="transferForm" action="/account/transfer" method="post">
+    付款人：<input id="fromUser" name="fromUser" th:value=""> <br>
+    收款人：<input id="toUser" name="toUser" th:value=""> <br>
+    转账金额：<input id="account" name="account" th:value=""> <br>
+    <input type="submit" value="支付">
+</form>
+</body>
+</html>
