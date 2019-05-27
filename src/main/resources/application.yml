@@ -1,5 +1,7 @@
 server:
   port: 8080
+  servlet:
+    context-path: /BootIntercepter  #配置ContextPath
 
 spring:
   datasource:
@@ -31,3 +33,4 @@ mybatis:
 logging:
   level:
     com.test1.dao: DEBUG
+    org.springframework: INFO
