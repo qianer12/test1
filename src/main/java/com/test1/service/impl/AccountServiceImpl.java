@@ -4,7 +4,6 @@ import com.test1.dao.AccountDao;
 import com.test1.entity.Account;
 import com.test1.service.AccountService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -15,7 +14,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountDao accountDao;
 
     @Override
-    @Transactional
+    //@Transactional
     public void transferAccounts(Account fromUserAccount, Account toUserAccount, float account) {
         fromUserAccount.setBalance(fromUserAccount.getBalance()-account);
         accountDao.update(fromUserAccount); // fromUser扣钱
